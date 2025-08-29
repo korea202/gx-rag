@@ -1,7 +1,15 @@
 import os
+import sys
 from typing import Dict
 
-from chains import (
+from dotenv import dotenv_values, load_dotenv
+from pydantic import BaseModel
+from fastapi import FastAPI
+
+if (python_path := dotenv_values().get('PYTHONPATH')) and python_path not in sys.path: sys.path.append(python_path)
+load_dotenv()
+
+from src.apps.sample_chat.chains.chains import (
     bug_step1_chain,
     bug_step2_chain,
     default_chain,
@@ -9,19 +17,16 @@ from chains import (
     parse_intent_chain,
     read_prompt_template,
 )
-from database import query_db
-from dotenv import load_dotenv
-from fastapi import FastAPI
-from memory import (
+from src.apps.sample_chat.database.database import query_db
+
+from src.apps.sample_chat.memory.memory import (
     get_chat_history,
     load_conversation_history,
     log_bot_message,
     log_user_message,
 )
-from pydantic import BaseModel
-from core.utils.web_search import query_web_search
 
-load_dotenv()
+from src.apps.sample_chat.tools.web_search import query_web_search
 
 
 app = FastAPI()

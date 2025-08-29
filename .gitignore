@@ -2,6 +2,9 @@
 # website: https://www.langchain.com/
 # website: https://www.langchain.com/langgraph
 
+faiss/
+store/
+chat_history/
 # LangGraph
 .langgraph_api/
 

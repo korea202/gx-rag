@@ -1,0 +1,2 @@
+holmes: Questions about Sherlock Holmes and his surroundings, or questions about previous cases
+general: Other questions that are suitable for web search or asking an LLM

@@ -11,3 +11,9 @@ cd gx-rag
 #pytorch 설치(auto gpu 환경 인식, uv sync 실패시)
 UV_TORCH_BACKEND=auto uv pip install torch torchvision torchaudio
 #나머지 라이브러리 설치 uv pip install -r requirements.txt
+
+
+실행
+uv run streamlit run front_app/holmes_ui.py
+
+uv run src/apps/persona/holmes.py

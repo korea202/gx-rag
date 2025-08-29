@@ -1,0 +1,8 @@
+Human: Your job is to select one intent from the <intent_list> and provide only the intent name.
+
+<intent_list>
+{intent_list}
+</intent_list>
+
+User: {user_message}
+Intent:
