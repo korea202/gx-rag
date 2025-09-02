@@ -6,6 +6,11 @@ import streamlit as st
 
 API_BASE_URL = "http://localhost:8000/qna"
 
+avatars = {
+    "user": "👤",
+    "assistant": "🕵️‍♂️",
+    "system": "⚙️"  # 필요시 추가
+}
 
 def request_chat_api(user_message: str, session_id: str) -> str:
     url = API_BASE_URL
@@ -21,7 +26,13 @@ def request_chat_api(user_message: str, session_id: str) -> str:
 
 
 def init_streamlit():
-    st.title("Simple chat")
+    
+    st.set_page_config(
+        page_title="Dances With Sherlock Holmes.", 
+        page_icon="🕵️‍♂️"  # 이모티콘 사용
+    )
+
+    st.title("🕵️‍♂️Dances With Sherlock Holmes.")
 
     # Initialize chat history
     if "messages" not in st.session_state:
@@ -37,7 +48,8 @@ def init_streamlit():
 
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
+        avatar = avatars.get(message["role"], "👤")  # 기본값 설정
+        with st.chat_message(message["role"], avatar=avatar):
             st.markdown(message["content"])
 
 
@@ -46,7 +58,7 @@ def chat_main():
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": message})
         # Display user message in chat message container
-        with st.chat_message("user"):
+        with st.chat_message("user", avatar=avatars["user"]):
             st.markdown(message)
 
         # Display assistant response in chat message container
@@ -54,7 +66,7 @@ def chat_main():
             message, session_id=st.session_state.session_id
         )
 
-        with st.chat_message("assistant"):
+        with st.chat_message("assistant", avatar=avatars["assistant"]):
             message_placeholder = st.empty()
             full_response = ""
             for lines in assistant_response.split("\n"):

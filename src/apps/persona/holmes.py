@@ -50,6 +50,10 @@ def gernerate_answer(req: UserRequest, conversation_id: str) -> Dict[str, str]:
 
     intent = parse_intent_chain.invoke(context)
 
+    print("1"*50)
+    print(f"intent={intent}")
+    print("1"*50)
+
     if intent['intent'] == "holmes":
         context["related_documents"] = query_db(context["user_message"])
         context["compressed_web_search_results"] = query_web_search(context["user_message"])

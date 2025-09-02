@@ -48,12 +48,17 @@ def query_db(query: str) -> List[str]:
     for doc in results:
         parents.append(summary_chain.invoke({'context': doc.page_content})['output'])
     
-    results = _db.similarity_search(query)    
+    """ results = _db.similarity_search(query)    
 
     for doc in results:
-        subs.append(doc.page_content)
+        subs.append(doc.page_content) """
 
     all = parents + subs
     
     str_docs = [doc for doc in all]
+
+    print("q"*50)
+    print("query_db="+ str(str_docs))
+    print("q"*50)
+
     return str_docs

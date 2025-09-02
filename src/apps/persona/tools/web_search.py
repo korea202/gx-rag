@@ -1,6 +1,6 @@
 import os
 
-from src.apps.sample_chat.chains.chains import search_compression_chain, search_value_check_chain
+from src.apps.persona.chains.chains import search_compression_chain, search_value_check_chain
 from dotenv import load_dotenv
 from langchain.tools import Tool
 #from langchain.utilities import GoogleSearchAPIWrapper
@@ -20,7 +20,7 @@ search_tool = Tool(
 ) """
 
 # 검색 도구 생성 (top_k: 결과 개수)
-search = TavilySearch(max_results=5)
+search = TavilySearch(max_results=10)
 
 search_tool = Tool(
     name="Tavily Search",
@@ -30,7 +30,21 @@ search_tool = Tool(
 
 def query_web_search(user_message: str) -> str:
     context = {"user_message": user_message}
-    context["related_web_search_results"] = search_tool.invoke({"query": user_message})
+    all_results = search_tool.invoke({"query": user_message})
+
+    filtered_results = [
+        result for result in all_results['results'] if float(result['score']) >= 0.5
+    ]
+
+     # 결과를 텍스트로 변환
+    context["related_web_search_results"] = "\n\n".join([
+        f"제목: {r['title']}\n내용: {r['content'][:]}..."
+        for r in filtered_results
+    ])
+
+    print("W"*50)
+    print("context="+ str(context))
+    print("W"*50)
 
     has_value = search_value_check_chain.invoke(context)
 
