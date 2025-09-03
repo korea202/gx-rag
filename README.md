@@ -21,7 +21,6 @@
  * Embedding :  BAAI/bge-m3
  * Vector DB : FAISS 
  * Search: Tavily API
- * Embedding :  BAAI/bge-m3
  * 버전 및 이슈관리 : github 
  * 의존성 관리 : uv
 
