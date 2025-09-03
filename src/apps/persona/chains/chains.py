@@ -37,7 +37,10 @@ def read_prompt_template(file_path: str) -> str:
 
     return prompt_template
 
-
+def printPrompt(context):
+    print("fin="+ ChatPromptTemplate.from_template( template=read_prompt_template(DEFAULT_RESPONSE_PROMPT_TEMPLATE)).format(**context))
+    
+    
 def create_chain(llm, template_path, output_key):
     return LLMChain(
         llm=llm,

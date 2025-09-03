@@ -15,6 +15,7 @@ from src.apps.persona.chains.chains import (
     default_chain,
     parse_intent_chain,
     read_prompt_template,
+    printPrompt
 )
 
 from src.apps.persona.database.database import query_db
@@ -57,10 +58,13 @@ def gernerate_answer(req: UserRequest, conversation_id: str) -> Dict[str, str]:
     if intent['intent'] == "holmes":
         context["related_documents"] = query_db(context["user_message"])
         context["compressed_web_search_results"] = query_web_search(context["user_message"])
+
+        printPrompt(context)
         answer = default_chain.invoke(context)['output']
     else:
         context["related_documents"] = ""
         context["compressed_web_search_results"] = query_web_search(context["user_message"])
+        printPrompt(context)
         answer = default_chain.invoke(context)['output']
 
     print("*"*50)
