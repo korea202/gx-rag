@@ -54,10 +54,32 @@ UV_TORCH_BACKEND=auto uv pip install torch torchvision torchaudio
 #나머지 라이브러리 설치 uv pip install -r requirements.txt
 ```
 
+## ⚙️ 올라마 설치
+```bash
+1. apt install curl
+  
+2. curl -fsSL https://ollama.com/install.sh | sh
+
+3. ollama --version
+  
+4. nohup ollama serve &
+
+5. ollama pull alibayram/Qwen3-30B-A3B-Instruct-2507
+```
+
 ## 🚀 실행
 
 ```bash
-uv run streamlit run front_app/holmes_ui.py
+1. .env.template 파일 카피본 생성 .env로 저장
 
-uv run src/apps/persona/holmes.py
+2. .env 파일내 PYTHONPATH(프로젝트 루트디렉토리), TAVILY_API_KEY(웹검색키) 설정
+
+3. 데이타 생성/테스트/저장: src/apps/persona/holmes.ipynb 단계별로 실행 
+
+4. 화면 ui 실행: uv run streamlit run front_app/holmes_ui.py
+
+5. API단 실행: uv run src/apps/persona/holmes.py
 ```
+<span style="color:red"> \*포트관련 에러시 터미널 연결시 -L(포트포워딩) 옵션으로 아래 포트를 열어놓습니다.</span> 
+
+ssh -i "C:\경로명\인증서명.pem" -L 11434:localhost:11434 -L 8188:localhost:8188 -L 8000:localhost:8000 -L 8501:localhost:8501 -p 연결포트주소 root@연결아이피
