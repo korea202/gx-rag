@@ -80,6 +80,8 @@ UV_TORCH_BACKEND=auto uv pip install torch torchvision torchaudio
 
 5. API단 실행: uv run src/apps/persona/holmes.py
 ```
-<span style="color:red"> \*포트관련 에러시 터미널 연결시 -L(포트포워딩) 옵션으로 아래 포트를 열어놓습니다.</span> 
+🚨🚨🚨 실행할때 포트관련 연결 에러가 난다면 실행전에 터미널 연결시 -L(포트포워딩) 옵션으로 아래 포트를 열어놓습니다.
 
+```bash
 ssh -i "C:\경로명\인증서명.pem" -L 11434:localhost:11434 -L 8188:localhost:8188 -L 8000:localhost:8000 -L 8501:localhost:8501 -p 연결포트주소 root@연결아이피
+```
