@@ -76,10 +76,13 @@ UV_TORCH_BACKEND=auto uv pip install torch torchvision torchaudio
 
 3. 데이타 생성/테스트/저장: src/apps/persona/holmes.ipynb 단계별로 실행 
 
-4. 화면 ui 실행: uv run streamlit run front_app/holmes_ui.py
+4. 화면 ui 실행: uv run streamlit run front_app/holmes_ui.py (4, 5번은 각각 다른 cmd 창에서 실행합니다.)
 
 5. API단 실행: uv run src/apps/persona/holmes.py
+
+6. http://localhost:8501
 ```
+
 🚨🚨🚨 실행할때 포트관련 연결 에러가 난다면 실행전에 터미널 연결시 -L(포트포워딩) 옵션으로 아래 포트를 열어놓습니다.
 
 ```bash
