@@ -692,6 +692,15 @@ wheels = [
 ]
 
 [[package]]
+name = "einops"
+version = "0.8.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e5/81/df4fbe24dff8ba3934af99044188e20a98ed441ad17a274539b74e82e126/einops-0.8.1.tar.gz", hash = "sha256:de5d960a7a761225532e0f1959e5315ebeafc0cd43394732f103ca44b9837e84", size = 54805, upload-time = "2025-02-09T03:17:00.434Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/87/62/9773de14fe6c45c23649e98b83231fffd7b9892b6cf863251dc2afa73643/einops-0.8.1-py3-none-any.whl", hash = "sha256:919387eb55330f5757c6bea9165c5ff5cfe63a642682ea788a6d472576d81737", size = 64359, upload-time = "2025-02-09T03:17:01.998Z" },
+]
+
+[[package]]
 name = "elastic-transport"
 version = "8.17.1"
 source = { registry = "https://pypi.org/simple" }
@@ -834,6 +843,24 @@ dependencies = [
     { name = "transformers" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/36/5f/a5e20bb601f83f4abd491e0aec2b991d23f54fefa135b64e4203b3cb59d6/FlagEmbedding-1.3.5.tar.gz", hash = "sha256:a0714cb8dd03f38e74b84530684c47ad8e0442ab1f4cbb7b0bcd4017dafb9f9c", size = 163889, upload-time = "2025-05-28T07:03:56.693Z" }
+
+[[package]]
+name = "flash-attn"
+version = "2.8.3"
+source = { path = "flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp311-cp311-linux_x86_64.whl" }
+dependencies = [
+    { name = "einops" },
+    { name = "torch" },
+]
+wheels = [
+    { filename = "flash_attn-2.8.3+cu12torch2.8cxx11abitrue-cp311-cp311-linux_x86_64.whl", hash = "sha256:3d41b2fc55753faa7f45d6568ea73a96b96afb48b82994ab9b49bcbcb6c87588" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "einops" },
+    { name = "torch" },
+]
 
 [[package]]
 name = "flatbuffers"
@@ -1124,6 +1151,7 @@ dependencies = [
     { name = "faiss-cpu" },
     { name = "fastapi" },
     { name = "flagembedding" },
+    { name = "flash-attn" },
     { name = "ipywidgets" },
     { name = "langchain" },
     { name = "langchain-chroma" },
@@ -1155,6 +1183,7 @@ requires-dist = [
     { name = "faiss-cpu", specifier = ">=1.12.0" },
     { name = "fastapi", specifier = ">=0.116.1" },
     { name = "flagembedding", specifier = ">=1.3.5" },
+    { name = "flash-attn", path = "flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp311-cp311-linux_x86_64.whl" },
     { name = "ipywidgets", specifier = ">=8.1.7" },
     { name = "langchain", specifier = ">=0.3.27" },
     { name = "langchain-chroma", specifier = ">=0.2.5" },
